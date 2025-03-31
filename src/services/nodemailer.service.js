@@ -1,6 +1,6 @@
 import { createTransport } from 'nodemailer';
 import getSignUpEmail from '../templates/welcomeEmail.template.js';
-import { mailSubject, systemRoles } from '../shared/constants/constant.js';
+import { mailSubject, SYSTEM_ROLES } from '../shared/constants/constant.js';
 
 import db from '../database/models/index.js';
 

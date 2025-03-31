@@ -1,10 +1,11 @@
-export const systemRoles = {
-  superAdmin: 'superAdmin',
+import { app_name } from '../../config/config.js';
+
+export const SYSTEM_ROLES = {
   admin: 'admin',
-  distributor: 'distributor',
+  user: 'user',
 };
 
 export const mailSubject = {
-  signup: 'Welcome to Yamaha Music!',
+  signup: `Welcome to ${app_name}!`,
   forgotPass: 'Forgot Password - OTP',
 };

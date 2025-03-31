@@ -3,11 +3,10 @@ import { password } from '../../shared/validations/custom.validation.js';
 
 export const register = {
   body: Joi.object().keys({
-    fullName: Joi.string().required(),
+    username: Joi.string().required(),
     email: Joi.string().required().email(),
     password: Joi.string().required().custom(password),
     role: Joi.string().optional(),
-    referralSource: Joi.string().optional(),
   }),
 };
 
@@ -20,7 +19,6 @@ export const login = {
   body: Joi.object().keys({
     email: Joi.string().required(),
     password: Joi.string().required(),
-    role: Joi.string().required(),
   }),
 };
 

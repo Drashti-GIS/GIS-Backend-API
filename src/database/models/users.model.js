@@ -1,8 +1,9 @@
 import { comparePassword } from '../../services/bcrypt.service.js';
+import { SYSTEM_ROLES } from '../../shared/constants/constant.js';
 
 export default (sequelize, DataTypes) => {
   const Users = sequelize.define(
-    'Users',
+    'users',
     {
       id: {
         allowNull: false,
@@ -43,8 +44,9 @@ export default (sequelize, DataTypes) => {
         defaultValue: true,
       },
       role: {
-        type: DataTypes.STRING,
-        allowNull: true,
+        type: DataTypes.ENUM(Object.values(SYSTEM_ROLES)),
+        allowNull: false,
+        defaultValue: SYSTEM_ROLES.user,
       },
     },
     {

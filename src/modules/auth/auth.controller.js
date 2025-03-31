@@ -21,15 +21,14 @@ export const verifyOTP = catchAsync(async (req, res) => {
 });
 
 export const login = catchAsync(async (req, res) => {
-  const { email, password, role } = req.body;
-  const user = await loginUserWithEmailAndPassword(email, password, role);
+  const { email, password } = req.body;
+  const user = await loginUserWithEmailAndPassword(email, password);
   if (!user.isVerified || !user.isActive) {
     throw new ApiError(STATUS_CODES.UNAUTHORIZED, 'Please verify your account.');
   }
   const tokenData = {
     id: user?.id,
-    firstName: user?.firstName,
-    lastName: user?.lastName,
+    username: user?.username,
     email: user?.email,
     role: user?.role,
   };

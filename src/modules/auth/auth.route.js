@@ -4,7 +4,7 @@ import validate from '../../middlewares/validate.js';
 import * as authController from './auth.controller.js';
 import { register, login, changePassword, verifyToken, TwoFA } from './auth.validation.js';
 import authMiddleware from '../../middlewares/auth.middleware.js';
-import { systemRoles } from '../../shared/constants/constant.js';
+import { SYSTEM_ROLES } from '../../shared/constants/constant.js';
 
 const router = Router();
 
@@ -16,7 +16,7 @@ router.post('/verify-forgot-password', authController.verifyforgotPassword);
 router.post('/reset-password', authController.resetPassword);
 router.post(
   '/change-password',
-  authMiddleware([systemRoles.superAdmin, systemRoles.distributor]),
+  authMiddleware([SYSTEM_ROLES.admin]),
   validate(changePassword),
   authController.changePassword
 );

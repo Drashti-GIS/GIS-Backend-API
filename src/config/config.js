@@ -36,6 +36,7 @@ if (error) {
 
 export const env = envVars.NODE_ENV;
 export const port = envVars.PORT;
+export const app_name = envVars.APP_NAME;
 
 export const jwt = {
   secretKey: envVars.JWT_SECRET,

@@ -2,6 +2,7 @@ import Sequelize from 'sequelize';
 import { _db } from '../../config/config.js';
 import logger from '../../config/logger.js';
 import usersModel from './users.model.js';
+import { runSeeders } from '../../seeders/index.js';
 
 const db = {};
 
@@ -22,6 +23,8 @@ const syncDB = async () => {
   try {
     await sequelize.sync({ alter: true, force: false });
     logger.info('🔁 Database Synchronized.');
+    // Run seeders after database sync
+    await runSeeders(db);
   } catch (err) {
     logger.error('Failed to sync db:', err);
   }

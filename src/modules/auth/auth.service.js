@@ -5,13 +5,13 @@ import { hashPassword } from '../../services/bcrypt.service.js';
 
 const { Users } = db;
 
-export const loginUserWithEmailAndPassword = async (email, password, role) => {
-  const user = await Users.scope('withPassword').findOne({ where: { email, role } });
+export const loginUserWithEmailAndPassword = async (email, password) => {
+  const user = await Users.scope('withPassword').findOne({ where: { email } });
   if (!user) {
-    throw new ApiError(STATUS_CODES.UNAUTHORIZED, 'Incorrect email or role.');
+    throw new ApiError(STATUS_CODES.UNAUTHORIZED, 'Incorrect email');
   }
   if (!(await user.isPasswordMatch(password))) {
-    throw new ApiError(STATUS_CODES.UNAUTHORIZED, 'Incorrect password.');
+    throw new ApiError(STATUS_CODES.UNAUTHORIZED, 'Incorrect password');
   }
 
   return user;

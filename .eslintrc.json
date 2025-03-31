@@ -1,0 +1,38 @@
+{
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "globals": {
+    "catchAsync": "readonly",
+    "ApiError": "readonly",
+    "STATUS_CODES": "readonly",
+    "globalThis": "readonly",
+    "apiHandlerWithTransaction": "readonly"
+  },
+  "extends": ["airbnb-base", "plugin:security/recommended", "plugin:prettier/recommended"],
+  "plugins": ["security", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-console": "off",
+    "func-names": "off",
+    "no-underscore-dangle": "off",
+    "consistent-return": "off",
+    "security/detect-object-injection": "off",
+    "endOfLine": 0,
+    "import/no-commonjs": "off",
+    "no-unused-vars": "off",
+    "import/extensions": ["error", "always"],
+    "radix": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js"]
+      }
+    }
+  }
+}

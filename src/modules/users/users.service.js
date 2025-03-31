@@ -9,15 +9,16 @@ import { hashPassword } from '../../services/bcrypt.service.js';
 const { Users } = db;
 
 export const createUser = async (userBody) => {
-  const { username, email, password, role } = userBody;
+  const { fullName, email, password, role } = userBody;
   const userAlreadyExists = await Users.findOne({ where: { email } });
   if (userAlreadyExists) {
     throw new ApiError(STATUS_CODES.BAD_REQUEST, 'User already exists !');
   }
   const hashedPassword = await hashPassword(password);
-
+  const [firstName, lastName] = fullName.split(' ');
   const newUser = {
-    username,
+    firstName,
+    lastName,
     email,
     password: hashedPassword,
     role,

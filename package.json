@@ -1,0 +1,101 @@
+{
+  "name": "yamaha-music",
+  "version": "1.7.0",
+  "description": "Complaint tracking solution - Yamaha-Music",
+  "main": "src/index.js",
+  "repository": "",
+  "type": "module",
+  "author": "IPS-dev",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "pm2:start": "pm2 start ecosystem.config.json --no-daemon",
+    "pm2:start:development": "pm2 start ecosystem.config.json --env development --no-daemon",
+    "pm2:start:test": "pm2 start ecosystem.config.json --env test --no-daemon",
+    "pm2:stop": "pm2 stop all",
+    "pm2:delete": "pm2 delete all",
+    "pm2:logs": "pm2 logs",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --check **/*.js",
+    "prettier:fix": "prettier --write **/*.js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "node",
+    "node.js",
+    "boilerplate",
+    "generator",
+    "express",
+    "rest",
+    "api",
+    "mongodb",
+    "mongoose",
+    "es6",
+    "es7",
+    "es8",
+    "es9",
+    "jest",
+    "travis",
+    "docker",
+    "passport",
+    "joi",
+    "eslint",
+    "prettier"
+  ],
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.0.0",
+    "helmet": "^4.1.0",
+    "joi": "^17.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
+    "morgan": "^1.9.1",
+    "nodemailer": "^6.3.1",
+    "path": "^0.12.7",
+    "pg": "^8.13.1",
+    "pm2": "^5.1.0",
+    "sequelize": "^6.37.5",
+    "uuid": "^11.0.3",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.0.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-security": "^1.4.0",
+    "husky": "7.0.4",
+    "lint-staged": "^11.0.0",
+    "nodemon": "^2.0.0",
+    "prettier": "^2.0.5",
+    "supertest": "^6.0.1"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint:fix",
+      "npm run format"
+    ],
+    "*.js": [
+      "npm run lint:fix",
+      "npm run format"
+    ],
+    "*.json": [
+      "npm run format"
+    ],
+    "*.md": [
+      "npm run format"
+    ]
+  }
+}
